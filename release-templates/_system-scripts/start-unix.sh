@@ -16,7 +16,7 @@ remove_if_replaced "Free GST Billing.sh"      "Free GST Billing - LINUX.sh"
 remove_if_replaced "Free GST Billing.hta"     "Free GST Billing - WINDOWS.hta"
 
 # Resolve port from persisted file if present.
-PORT=47371
+PORT=3068
 if [ -f "$SYSTEM_DIR/data/port.txt" ]; then
   P=$(tr -d '[:space:]' < "$SYSTEM_DIR/data/port.txt")
   [[ "$P" =~ ^[0-9]+$ ]] && PORT="$P"

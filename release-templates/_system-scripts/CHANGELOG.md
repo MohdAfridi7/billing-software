@@ -1183,7 +1183,7 @@ folder it actually looked in, so the two can be told apart at a glance.
 This one had been broken since v1.10.44 and hit every Windows user. After an
 install, or whenever you clicked **Open App**, the app started correctly and
 then a console window said *"Server did not respond in 15s"* and stopped.
-Nothing opened. Pasting `http://localhost:47371` into a browser by hand always
+Nothing opened. Pasting `http://localhost:3068` into a browser by hand always
 worked.
 
 The script checked whether the app was up by asking it for a page with a
@@ -1869,7 +1869,7 @@ v1.10.31. A later commit removed `src/` from the ZIP to halve the download
 fix. The rest of `src/` stays out and the ZIP is unchanged in size.
 
 Verified by extracting the built ZIP and starting the server from it:
-it now prints `running at http://localhost:47371` instead of exiting.
+it now prints `running at http://localhost:3068` instead of exiting.
 
 ### Added - the build refuses to ship a server that cannot start
 
@@ -5394,7 +5394,7 @@ whatever size it wants.
 
 ### Dev DX (L20)
 
-Vite proxy `target: 'http://localhost:47371'` was hardcoded. If
+Vite proxy `target: 'http://localhost:3068'` was hardcoded. If
 Express started on 47372 (EADDRINUSE bumped default), every `/api` call
 in dev failed. Now: `vite.config.js` reads `data/port.txt` at Vite
 startup and uses whatever port Express landed on. Restart Vite if the
@@ -5969,7 +5969,7 @@ all return correct HTTP status codes).
 ### Security — CORS lockdown
 
 Prior: `app.use(cors())` returned `Access-Control-Allow-Origin: *`. Any
-site the user visited could `fetch('http://localhost:47371/api/bills')`
+site the user visited could `fetch('http://localhost:3068/api/bills')`
 and read/wipe every invoice.
 
 Now: strict origin check — allows only `http://localhost:<port>`,
@@ -6570,7 +6570,7 @@ Hotfix: Launcher was flooding the browser console with
 ### Fixed — Launcher no longer spams the console
 
 **Root cause**: the Launcher (`index.html` at repo root) polled every
-2 seconds by scanning ALL 50 ports in the range 47371–47420 in parallel.
+2 seconds by scanning ALL 50 ports in the range 3068–47420 in parallel.
 When the server was stopped (e.g. right after `Update FreeGSTBill.bat`
 finished, before the new server had started), that produced ~25 failed
 fetches per second, each logging `net::ERR_CONNECTION_REFUSED` to
@@ -8039,7 +8039,7 @@ integrity, and money math. Full audit report at
 
 ### Fixed — Dev environment
 
-- **Vite dev proxy points at port 47371** (Express default since v1.5.2),
+- **Vite dev proxy points at port 3068** (Express default since v1.5.2),
   was `3001`. `npm run dev` now works for contributors without manual
   config edits.
 
@@ -8226,7 +8226,7 @@ A self-contained static HTML page at the install root. Features:
 - **Stop Server** button — triggers the new `freegstbill-stop://`
   protocol handler (runs `Stop FreeGSTBill.bat`)
 - **Smart port discovery** — tries cached port first, falls back to
-  parallel scan of 47371-47420. Caches the alive port in
+  parallel scan of 3068-47420. Caches the alive port in
   `sessionStorage` so subsequent polls only hit one URL.
 - **Info card** — shows port, version, App URL, last-checked time
 - **Troubleshooting `<details>`** — collapsible help section with a
@@ -8566,21 +8566,21 @@ are stricter about declaration order than dev bundles.
 ## [1.5.2] — 2026-04-30
 
 Port choice + listener safety. The server has moved off the heavily-contested
-**3001** default to **47371** (an unassigned IANA port) so a fresh install
+**3001** default to **3068** (an unassigned IANA port) so a fresh install
 doesn't collide with any of the dozen-or-so other dev tools that camp on the
 3000-range. The launcher remains port-agnostic — you've never had to
 remember the number, and now you have one less reason to think about it.
 
 ### Changed — default port
 
-- **Default port: `3001` → `47371`.** The new default is in IANA's
+- **Default port: `3001` → `3068`.** The new default is in IANA's
   unassigned range (between registered 1024–49151 and dynamic
   49152–65535), where it's effectively guaranteed not to collide with
   anything common. The Start / Stop / Update / install-time scripts all
   read `data/port.txt` so they always open whichever port the server
   actually chose — users never need to remember a number.
 - **Collision scan widened: 10 → 50 ports.** On the rare collision the
-  server now scans `47371..47420` for a free port. If everything in that
+  server now scans `3068..47420` for a free port. If everything in that
   range is somehow occupied, it falls back to "let the OS pick anything
   free" (`port=0`) rather than failing to start. Whatever wins is
   persisted to `data/port.txt`, so the next launch tries that port first
@@ -8592,12 +8592,12 @@ remember the number, and now you have one less reason to think about it.
 
 ### Changed — launcher scripts
 
-- **`Start FreeGSTBill.bat`** — default fallback updated to 47371 (was
+- **`Start FreeGSTBill.bat`** — default fallback updated to 3068 (was
   3001) for first-ever installs where `data/port.txt` doesn't yet exist.
   Documentation block added in-line explaining the read-write dance so
   future maintainers don't reintroduce audit bug B8 (probe-before-read
   timing).
-- **`Stop FreeGSTBill.bat`** — default fallback updated to 47371. Still
+- **`Stop FreeGSTBill.bat`** — default fallback updated to 3068. Still
   reads `data/port.txt` first; only falls back if the file is missing.
   Avoids the previous behaviour of taskkilling whichever poor app
   happens to be on port 3001.
@@ -8616,8 +8616,8 @@ remember the number, and now you have one less reason to think about it.
 
 - `README.md`, `START HERE.txt`, `docs/USER_GUIDE.md`, and the in-app
   searchable User Guide (`src/userGuideContent.js`) all updated:
-  `localhost:3001` → `localhost:47371`. README's Quick Start gained a
-  *"Why port 47371?"* paragraph so curious users get the rationale
+  `localhost:3001` → `localhost:3068`. README's Quick Start gained a
+  *"Why port 3068?"* paragraph so curious users get the rationale
   inline instead of stumbling on it later.
 
 ### Upgrade notes
@@ -8626,8 +8626,8 @@ remember the number, and now you have one less reason to think about it.
   `data/port.txt` saying `3001`) — keep running on 3001 forever unless
   they delete `data/port.txt`. The persisted preference always wins.
   Nothing breaks.
-- **Fresh installs** start on 47371 automatically.
-- **Switch an existing install to 47371**: stop the server, delete
+- **Fresh installs** start on 3068 automatically.
+- **Switch an existing install to 3068**: stop the server, delete
   `data/port.txt`, restart. The launcher will discover the new port and
   open the right URL on its own.
 

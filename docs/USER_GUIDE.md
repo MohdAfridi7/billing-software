@@ -104,9 +104,9 @@ The `.hta` launcher is Windows-only — use `Free GST Billing - MAC.command` or
 git clone https://github.com/IamRamgarhia/Free-GST-Billing-Software.git
 cd Free-GST-Billing-Software
 npm install
-npm start          # builds, then serves on http://localhost:47371
+npm start          # builds, then serves on http://localhost:3068
 ```
-Open <http://localhost:47371> in your browser.
+Open <http://localhost:3068> in your browser.
 
 **Updating on Linux or a NAS.** If you installed from the release ZIP, use
 *Control Panel → Update Now* (v1.10.66 and later). It backs up your data first,
@@ -375,7 +375,7 @@ The local server isn't running. Open the launcher (Desktop shortcut) and click
 **Open App** — it starts the server if it is not already up. The shortcut
 always opens the correct URL, so you never need to type a port number. If you
 want to check which port the app is using, open `_system\data\port.txt` (it
-usually says `47371`, but the server picks a free port automatically if that
+usually says `3068`, but the server picks a free port automatically if that
 one is in use).
 
 ### Installer says Node.js install failed

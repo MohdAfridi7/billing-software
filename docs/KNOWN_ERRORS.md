@@ -168,7 +168,7 @@ misleading; it is a permissions problem, not a scope problem.
 
 ```
 Content-Security-Policy: The page's settings blocked the loading of a
-resource (frame-src) at blob:http://localhost:47371/993b6dbb-... because
+resource (frame-src) at blob:http://localhost:3068/993b6dbb-... because
 it violates the following directive: "frame-src https://accounts.google.com"
 ```
 
@@ -384,7 +384,7 @@ precedence a browser applies — so it fails on the old markup.
 **Symptom**
 
 ```
-  Starting server on port 47371...
+  Starting server on port 3068...
   Server did not respond in 15s. Check for errors in this window.
 ```
 
@@ -716,7 +716,7 @@ before shipping a release that touches the launcher or the scripts.
 
 **Guard** - none automated (it needs a real Windows desktop session and a
 browser). Verified by hand: extract the ZIP, run `_system\install-windows.ps1`,
-and confirm the browser opens on `http://localhost:47371` with no warning.
+and confirm the browser opens on `http://localhost:3068` with no warning.
 
 ---
 

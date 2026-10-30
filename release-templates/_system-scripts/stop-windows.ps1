@@ -8,7 +8,7 @@ $Host.UI.RawUI.WindowTitle = 'Free GST Billing - Stop Server'
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $portFile = Join-Path $ScriptDir 'data\port.txt'
-$port = 47371
+$port = 3068
 if (Test-Path $portFile) {
   $p = (Get-Content $portFile -Raw).Trim()
   if ($p -match '^\d+$') { $port = [int]$p }

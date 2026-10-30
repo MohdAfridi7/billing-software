@@ -168,7 +168,7 @@
           <strong>JavaScript is disabled in your browser.</strong>
           This control panel needs JavaScript to check server status. Either enable it,
           or open the file <code>Start FreeGSTBill.bat</code> in the install folder
-          and then go to <a href="http://localhost:47371/">http://localhost:47371/</a>
+          and then go to <a href="http://localhost:3068/">http://localhost:3068/</a>
           in your browser.
         </div>
       </div>
@@ -236,7 +236,7 @@
 
       // v1.9.6 — Polling redesigned to eliminate console spam.
       //
-      // BEFORE: every 2 seconds we scanned 50 ports (47371-47420) in
+      // BEFORE: every 2 seconds we scanned 50 ports (3068-47420) in
       // parallel looking for the server. When the server was down, that
       // meant ~25 failed fetches per second flooding DevTools console
       // with net::ERR_CONNECTION_REFUSED for every port + hitting the
@@ -255,7 +255,7 @@
       //
       // Net result when server is down: ~1 request every 15s max, not
       // 25 per second.
-      var DEFAULT_PORT = 47371;
+      var DEFAULT_PORT = 3068;
       var SCAN_RANGE = 50;
       var activePort = DEFAULT_PORT;
       var pollTimer = null;

@@ -206,7 +206,7 @@ For the price of one coffee a month you get full root on a Linux VM, no serverle
 5. Put **Caddy** in front for automatic HTTPS:
    ```
    billing.yourdomain.com {
-     reverse_proxy localhost:47371
+     reverse_proxy localhost:3068
      basicauth {
        admin JDJhJDE0JGl1... # bcrypt hash of your password
      }
@@ -222,12 +222,12 @@ Backups: `crontab -e` → `0 3 * * * rsync -a /root/Free-GST-Billing-Software/da
 
 ## Option D — Cloudflare Tunnel *(zero-cost, home PC only)*
 
-Best kept secret. Your app runs on your home PC as usual (`localhost:47371`); Cloudflare exposes it publicly at a URL you control, with HTTPS and (optional) Cloudflare Access authentication in front. No public IP, no port forwarding, no cloud bill.
+Best kept secret. Your app runs on your home PC as usual (`localhost:3068`); Cloudflare exposes it publicly at a URL you control, with HTTPS and (optional) Cloudflare Access authentication in front. No public IP, no port forwarding, no cloud bill.
 
 1. Install `cloudflared` from [cloudflare.com/products/tunnel](https://www.cloudflare.com/products/tunnel/)
 2. `cloudflared tunnel login` → picks your Cloudflare account
 3. `cloudflared tunnel create freegstbill`
-4. In the Cloudflare Zero Trust dashboard, create a **Public Hostname** for the tunnel → `billing.yourdomain.com` → HTTP → `localhost:47371`
+4. In the Cloudflare Zero Trust dashboard, create a **Public Hostname** for the tunnel → `billing.yourdomain.com` → HTTP → `localhost:3068`
 5. Add an **Access policy** requiring your email to log in — now only YOU can reach it
 6. Run `cloudflared tunnel run freegstbill` (or install as a service)
 

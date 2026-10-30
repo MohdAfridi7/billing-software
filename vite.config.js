@@ -13,14 +13,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // v1.10.6 — audit L20: read `data/port.txt` when it exists so the dev
 // proxy tracks whatever port Express landed on (Express drifts off the
 // default when EADDRINUSE bumps it to 47372, 47373, …). Falls back to
-// the historical 47371 default if the file's missing.
+// the historical 3068 default if the file's missing.
 const readActivePort = () => {
   try {
     const p = path.join(__dirname, 'data', 'port.txt');
-    if (!fs.existsSync(p)) return 47371;
+    if (!fs.existsSync(p)) return 3068;
     const n = parseInt(fs.readFileSync(p, 'utf-8').trim(), 10);
-    return (isFinite(n) && n >= 1024 && n <= 65535) ? n : 47371;
-  } catch { return 47371; }
+    return (isFinite(n) && n >= 1024 && n <= 65535) ? n : 3068;
+  } catch { return 3068; }
 };
 const activeExpressPort = readActivePort();
 
@@ -276,7 +276,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      // v1.10.6 — audit L20: was hardcoded 47371. Now reads
+      // v1.10.6 — audit L20: was hardcoded 3068. Now reads
       // `data/port.txt` at Vite start (see `activeExpressPort` at top
       // of file). Restart Vite if the server rebooted onto a new port.
       '/api': {

@@ -112,7 +112,7 @@ Remove-ObsoleteFiles
 
 # Read persisted port (server writes this after successful bind).
 $portFile = Join-Path $SystemDir 'data\port.txt'
-$port = 47371
+$port = 3068
 if (Test-Path $portFile) {
   $p = (Get-Content $portFile -Raw).Trim()
   if ($p -match '^\d+$') { $port = [int]$p }
