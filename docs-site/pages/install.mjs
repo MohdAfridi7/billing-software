@@ -64,7 +64,7 @@ ${which}
   <li><strong>If Windows warns you</strong>See <a href="#windows-protected">"Windows protected your PC"</a> just below: click ${ui('More info')}, then ${ui('Run anyway')}. If it asks <i>Do you want to run this file?</i>, click ${ui('Run')} or ${ui('Open')}.</li>
   <li><strong>Click Install</strong>A small window opens with one big button. Click ${ui('Install')}. There is nothing to fill in.</li>
   <li><strong>Leave the black window alone</strong>A black window appears and does the work: it may get Node.js (the engine the app runs on, about 30 MB, kept inside the app folder) and then the app's parts. This takes 1 to 3 minutes. Don't close it; it closes by itself.</li>
-  <li><strong>The app opens in your browser</strong>at <code>http://localhost:3068</code>. A short welcome asks for your business details. See <a href="first-run.html">The first-run setup</a>.</li>
+  <li><strong>The app opens in your browser</strong>at <code>http://45.13.59.233:3068</code>. A short welcome asks for your business details. See <a href="first-run.html">The first-run setup</a>.</li>
 </ol>
 <figure class="pair">
   <img src="${img('launcher-install.png')}" alt="The launcher before install, showing one Install button">
@@ -172,7 +172,7 @@ ${which}
   <li><strong>Confirm</strong>A box says macOS cannot check the developer. Click ${ui('Open')}.</li>
   <li><strong>On macOS 15 Sequoia or newer, if there is no Open button</strong>Click ${ui('Done')}. Open the Apple menu (the apple logo) → ${ui('System Settings')} → ${ui('Privacy &amp; Security')}, scroll down to the message about <b>Free GST Billing - MAC</b>, click ${ui('Open Anyway')}, type your password, then ${ui('Open Anyway')} again.</li>
   <li><strong>A Terminal window opens</strong>It is a plain text window; you do not need to type anything in it except one key. It says <i>App dependencies not installed yet ... Install now? [Y/n]</i>. Press ${key('Return')}.</li>
-  <li><strong>Wait 2 to 3 minutes</strong>Text scrolls past while it sets up. When it says <i>Server running. This window can be closed</i>, the app opens in your browser at <code>http://localhost:3068</code>.</li>
+  <li><strong>Wait 2 to 3 minutes</strong>Text scrolls past while it sets up. When it says <i>Server running. This window can be closed</i>, the app opens in your browser at <code>http://45.13.59.233:3068</code>.</li>
   <li><strong>Close the Terminal window</strong>The app keeps running. A short welcome asks for your business details; see <a href="first-run.html">The first-run setup</a>.</li>
 </ol>
 </section>
@@ -193,7 +193,7 @@ ${which}
 <ol class="steps">
   <li><strong>Double-click "Free GST Billing - MAC"</strong>After the first time, a normal double-click works. If the app is already running it just opens your browser.</li>
 </ol>
-<p><b>Tip:</b> make a Desktop shortcut. Control-click the launcher → ${ui('Make Alias')}, and drag the alias to your Desktop. You can also bookmark <code>http://localhost:3068</code> in your browser; it works while the app is running.</p>
+<p><b>Tip:</b> make a Desktop shortcut. Control-click the launcher → ${ui('Make Alias')}, and drag the alias to your Desktop. You can also bookmark <code>http://45.13.59.233:3068</code> in your browser; it works while the app is running.</p>
 <p>To stop the app: in the app open <b>Control Panel</b> in the sidebar and click ${ui('Stop Server')}. Restarting the Mac also stops it.</p>
 <p>Your data is in <code>Free-GST-Billing/_system/data</code>. Updating: see <a href="update.html#mac">Updating on a Mac</a>; never drag a new download over the old folder.</p>
 </section>
@@ -242,9 +242,9 @@ ${which}
 <pre><code>cd ~/Free-GST-Billing && bash "Free GST Billing - LINUX.sh"</code></pre>
 <ol class="steps">
   <li><strong>Press Enter to install</strong>It asks <i>Install now? [Y/n]</i>. Press ${key('Enter')}.</li>
-  <li><strong>Wait 2 to 3 minutes</strong>When it says <i>Server running</i>, the app opens in your browser at <code>http://localhost:3068</code>. You can close the Terminal; the app keeps running.</li>
+  <li><strong>Wait 2 to 3 minutes</strong>When it says <i>Server running</i>, the app opens in your browser at <code>http://45.13.59.233:3068</code>. You can close the Terminal; the app keeps running.</li>
 </ol>
-<p><b>Every day after that</b>, open the Terminal and run the same command. Or bookmark <code>http://localhost:3068</code>; it works while the app is running. To stop the app: <b>Control Panel</b> in the app → ${ui('Stop Server')}, or restart the computer.</p>
+<p><b>Every day after that</b>, open the Terminal and run the same command. Or bookmark <code>http://45.13.59.233:3068</code>; it works while the app is running. To stop the app: <b>Control Panel</b> in the app → ${ui('Stop Server')}, or restart the computer.</p>
 </section>
 
 <section id="nas">

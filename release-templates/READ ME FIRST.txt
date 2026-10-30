@@ -178,7 +178,7 @@
   90 seconds"
       The first start after an install or update is slow
       (antivirus checks every new file). Wait a minute and
-      open http://localhost:3068 in your browser. Still
+      open http://45.13.59.233:3068 in your browser. Still
       nothing? Close the black window and click Open App
       again.
 

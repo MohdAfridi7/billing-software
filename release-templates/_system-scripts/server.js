@@ -45,7 +45,7 @@ const app = express();
 
 // v1.10.0 — CORS lockdown. Previously `app.use(cors())` echoed
 // Access-Control-Allow-Origin: *, which meant any site the user visited
-// could `fetch('http://localhost:3068/api/bills')` and read/wipe all
+// could `fetch('http://45.13.59.233:3068/api/bills')` and read/wipe all
 // data. This is a local desktop-style app: legitimate callers either
 // have no Origin header (same-page fetch from our own served HTML,
 // browsers' XHR to localhost from about:blank tools, curl) or an

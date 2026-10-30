@@ -5,7 +5,7 @@
 # detect state (Node? installed?) and offer a minimal menu, then
 # hand off to the underlying script. All the "fancy UI" (Update /
 # Backup / Restore / Move / Uninstall buttons) lives INSIDE the
-# app at http://localhost:3068/control-panel once the server is
+# app at http://45.13.59.233:3068/control-panel once the server is
 # running — this launcher is just the front door.
 #
 # Design decisions:

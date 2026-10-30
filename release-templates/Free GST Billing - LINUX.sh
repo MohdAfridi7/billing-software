@@ -8,7 +8,7 @@
 # Same design as the .command variant for macOS: detect state,
 # offer a minimal menu, hand off to _system/*.sh. All post-install
 # actions live in the in-app Control Panel at
-# http://localhost:3068/control-panel.
+# http://45.13.59.233:3068/control-panel.
 
 set -e
 
