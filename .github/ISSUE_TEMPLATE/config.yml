@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: User guide
+    url: https://dicecodes.com/free-gst-software-documentation/
+    about: How to install, update and use every screen. Many answers are already here.
+  - name: Custom software or paid help
+    url: https://dicecodes.com
+    about: DiceCodes builds custom software and offers setup and support plans.
