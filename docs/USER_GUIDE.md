@@ -104,9 +104,9 @@ The `.hta` launcher is Windows-only — use `Free GST Billing - MAC.command` or
 git clone https://github.com/IamRamgarhia/Free-GST-Billing-Software.git
 cd Free-GST-Billing-Software
 npm install
-npm start          # builds, then serves on http://45.13.59.233:3068
+npm start          # builds, then serves on https://gst.jiyalalsuraksha.com
 ```
-Open <http://45.13.59.233:3068> in your browser.
+Open <https://gst.jiyalalsuraksha.com> in your browser.
 
 **Updating on Linux or a NAS.** If you installed from the release ZIP, use
 *Control Panel → Update Now* (v1.10.66 and later). It backs up your data first,

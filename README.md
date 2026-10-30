@@ -76,7 +76,7 @@ The launcher:
 - Detects if Node.js is installed; installs it on Windows automatically if missing
 - Runs `npm install` inside `_system/` (one-time, ~2 min)
 - Creates a **Desktop shortcut** + **Start-Menu entry** so you never open the folder again
-- Starts the server and opens your browser at **http://45.13.59.233:3068**
+- Starts the server and opens your browser at **https://gst.jiyalalsuraksha.com**
 
 From then on, click the Desktop shortcut. To update / backup / restore / move to another PC / stop the server — use the buttons in that same launcher, or the in-app **⚙ Control Panel** in the sidebar. No batch files, no CMD windows.
 
@@ -142,7 +142,7 @@ You need: Windows 10/11 PC, ~50 MB free disk, your business name + bank details 
 2. Right-click the downloaded ZIP → **Extract All** → pick a folder you'll remember (e.g. `Documents\FreeGSTBill`)
 3. Open the **extracted** folder → double-click **`Free GST Billing - WINDOWS`** (each launcher is named after the system it is for)
 4. Click **Install Node & App**. It installs Node.js for you if you do not have it, then sets everything up. Takes 1–2 minutes the first time
-5. Click **Open App** — the app opens in your browser at `http://45.13.59.233:3068`, and a Desktop shortcut is waiting for you next time
+5. Click **Open App** — the app opens in your browser at `https://gst.jiyalalsuraksha.com`, and a Desktop shortcut is waiting for you next time
 
 > **In a hurry?** One PowerShell command does steps 1–4 for you:
 > `irm https://raw.githubusercontent.com/IamRamgarhia/Free-GST-Billing-Software/main/install.ps1 | iex`
@@ -437,7 +437,7 @@ If we priced every 🆕 feature at the going rate on the paid alternatives:
 1. **Download the ZIP** → [click here](https://github.com/IamRamgarhia/Free-GST-Billing-Software/releases/latest/download/Free-GST-Billing.zip) or grab the latest from [Releases](https://github.com/IamRamgarhia/Free-GST-Billing-Software/releases)
 2. **Extract** it anywhere (e.g. `Documents\FreeGSTBill`) — right-click the ZIP → *Extract All*
 3. Open the extracted folder and **double-click** `Free GST Billing - WINDOWS.hta`
-4. Click **Install Node & App** once. When it finishes, click **Open App** — the app opens at **http://45.13.59.233:3068**, and a **Desktop shortcut** and **Start-Menu entry** are created for you
+4. Click **Install Node & App** once. When it finishes, click **Open App** — the app opens at **https://gst.jiyalalsuraksha.com**, and a **Desktop shortcut** and **Start-Menu entry** are created for you
 
 That's it. The launcher installs Node.js if you don't have it. From then on, click the Desktop shortcut. Update, Backup, Restore, Move to another PC and Stop Server are buttons in that same launcher — and in the app's in-built **⚙ Control Panel**.
 
@@ -475,13 +475,13 @@ If the app is already installed in that folder with data in it, the command stop
 git clone https://github.com/IamRamgarhia/Free-GST-Billing-Software.git
 cd Free-GST-Billing-Software
 npm install
-npm start                # production build + serve on http://45.13.59.233:3068
+npm start                # production build + serve on https://gst.jiyalalsuraksha.com
 ```
 
 For live-reload development:
 
 ```bash
-npm run dev              # dev server on http://localhost:5173 · API on http://45.13.59.233:3068
+npm run dev              # dev server on http://localhost:5173 · API on https://gst.jiyalalsuraksha.com
 ```
 
 ### Option 3: Install as a Desktop App (any OS)
@@ -500,7 +500,7 @@ Free GST Billing Software is a **Progressive Web App** — once installed, it ge
 
 ### How to install as a PWA
 
-1. Open **http://45.13.59.233:3068** in Chrome / Edge / Brave (any Chromium browser)
+1. Open **https://gst.jiyalalsuraksha.com** in Chrome / Edge / Brave (any Chromium browser)
 2. Click the orange **Install as Desktop App** banner at the top — or the **➕ install icon** in the address bar
 3. The app opens in its own window with the GST Billing Software icon in your Start Menu / taskbar
 
@@ -771,7 +771,7 @@ You can also contribute by:
 2. Enable the **Google Drive API**
 3. Create an **OAuth 2.0 Client ID** (Web application) under Credentials
 4. Add authorized JavaScript origins:
-   - `http://45.13.59.233:3068` (production install)
+   - `https://gst.jiyalalsuraksha.com` (production install)
    - `http://localhost:5173` (developer mode, optional)
 5. Copy the Client ID into **Settings → Cloud Backup** in the app
 6. Click **Connect Google Drive** and authorize
@@ -823,7 +823,7 @@ Find the message you see. **None of these touch your invoices**: they stay in th
 | Mac: **"cannot be opened because Apple cannot check it"** / **"unidentified developer"** | The app isn't signed by Apple. **Control-click** the file → **Open** → **Open**, once. Or **System Settings → Privacy & Security → Open Anyway**. |
 | **"Node.js … is too old"**, **`npm ERR!`**, or a file named **`npm-debug.log`** in `_system` | The PC has an old Node.js. **v1.10.81 and later fix this themselves**: click **Install** or **Open App** again. On an older version: install **Node.js LTS** from [nodejs.org](https://nodejs.org), delete **only** `_system\node_modules`, then click **Install**. Never delete `_system\data`. |
 | **"could not install the app's dependencies"** / **"cannot reach the internet"** | The first install needs the internet. Check the connection; in an office, a proxy or firewall may block `registry.npmjs.org`. Click **Install** again: it carries on where it stopped. |
-| **"Still starting…"** / **"The server has not answered in 90 seconds"** | The first start after an install or update is slow while antivirus checks the new files. Wait a minute and open <http://45.13.59.233:3068>. Still nothing? Close the black window and click **Open App** again. |
+| **"Still starting…"** / **"The server has not answered in 90 seconds"** | The first start after an install or update is slow while antivirus checks the new files. Wait a minute and open <https://gst.jiyalalsuraksha.com>. Still nothing? Close the black window and click **Open App** again. |
 | **"Free GST Billing is already installed on this computer, in: …"** | You extracted a new ZIP into a new folder. Your invoices are in the folder it names: open that copy from your Desktop shortcut and use **More options → Update to the latest version**. Delete the new folder. |
 | **"The app cannot write to its own folder"** | Don't keep it in `C:\Program Files`. Move the whole Free-GST-Billing folder to Documents or `D:\` and open it from there. |
 | **"Drive … is almost full"** | The install needs about 400 MB free. Empty the Recycle Bin or delete old downloads. |

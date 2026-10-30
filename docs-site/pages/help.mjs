@@ -136,7 +136,7 @@ export default [
 
 <section id="not-answered">
 <h2>"Still starting..." or "The server has not answered in 90 seconds"</h2>
-<p>The first start after an install or update is slow, because antivirus checks every new file. Wait a minute, then open <code>http://45.13.59.233:3068</code> in your browser. If it still does not open, close the black window and click ${ui('Open App')} again; from v1.10.81 it also repairs an install that an update left half done. If the window shows an error above that line, the entries under <a href="#install-failed">The install stopped with an error</a> say what to do.</p>
+<p>The first start after an install or update is slow, because antivirus checks every new file. Wait a minute, then open <code>https://gst.jiyalalsuraksha.com</code> in your browser. If it still does not open, close the black window and click ${ui('Open App')} again; from v1.10.81 it also repairs an install that an update left half done. If the window shows an error above that line, the entries under <a href="#install-failed">The install stopped with an error</a> say what to do.</p>
 </section>
 
 <section id="cannot-connect">

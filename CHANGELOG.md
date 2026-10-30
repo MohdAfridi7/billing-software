@@ -1205,7 +1205,7 @@ folder it actually looked in, so the two can be told apart at a glance.
 This one had been broken since v1.10.44 and hit every Windows user. After an
 install, or whenever you clicked **Open App**, the app started correctly and
 then a console window said *"Server did not respond in 15s"* and stopped.
-Nothing opened. Pasting `http://45.13.59.233:3068` into a browser by hand always
+Nothing opened. Pasting `https://gst.jiyalalsuraksha.com` into a browser by hand always
 worked.
 
 The script checked whether the app was up by asking it for a page with a
@@ -1891,7 +1891,7 @@ v1.10.31. A later commit removed `src/` from the ZIP to halve the download
 fix. The rest of `src/` stays out and the ZIP is unchanged in size.
 
 Verified by extracting the built ZIP and starting the server from it:
-it now prints `running at http://45.13.59.233:3068` instead of exiting.
+it now prints `running at https://gst.jiyalalsuraksha.com` instead of exiting.
 
 ### Added - the build refuses to ship a server that cannot start
 
@@ -5416,7 +5416,7 @@ whatever size it wants.
 
 ### Dev DX (L20)
 
-Vite proxy `target: 'http://45.13.59.233:3068'` was hardcoded. If
+Vite proxy `target: 'https://gst.jiyalalsuraksha.com'` was hardcoded. If
 Express started on 47372 (EADDRINUSE bumped default), every `/api` call
 in dev failed. Now: `vite.config.js` reads `data/port.txt` at Vite
 startup and uses whatever port Express landed on. Restart Vite if the
@@ -5991,7 +5991,7 @@ all return correct HTTP status codes).
 ### Security — CORS lockdown
 
 Prior: `app.use(cors())` returned `Access-Control-Allow-Origin: *`. Any
-site the user visited could `fetch('http://45.13.59.233:3068/api/bills')`
+site the user visited could `fetch('https://gst.jiyalalsuraksha.com/api/bills')`
 and read/wipe every invoice.
 
 Now: strict origin check — allows only `http://localhost:<port>`,
