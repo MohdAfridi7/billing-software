@@ -1,21 +1,18 @@
-import 'dotenv/config';
-import * as db from './db.js';
-import * as cloud from './cloud.js';
-import express from 'express';
-// v1.10.0 — `cors` package no longer imported. The CORS-lockdown
-// middleware below is intentionally custom + strict (localhost only)
-// where `cors()` echoed `*` for every origin.
-import fs from 'fs';
 import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
-// v1.10.31 — Data-F3.1: share computeInvoiceTotals with the client so
-// server-generated recurring invoices honour UTGST, cess, RCM, TDS/TCS,
-// discount modes (percent / unit / with-tax), tax-inclusive back-calc,
-// invoice-level discount, and round-off. Previously the recurring auto-fire
-// re-implemented totals inline and silently reintroduced every bug the
-// v1.10.1 extraction fixed. Same source of truth now.
-import { templateTotals, clientYearToDate, nextCounterValue, startFor, numberSeriesFor, counterKeyFor, formatDocNumber, businessKeyOf, getFinancialYearLabel, INVOICE_TYPES } from './src/utils.js';
+import {
+  templateTotals,
+  clientYearToDate,
+  nextCounterValue,
+  startFor,
+  numberSeriesFor,
+  counterKeyFor,
+  formatDocNumber,
+  businessKeyOf,
+  getFinancialYearLabel,
+  INVOICE_TYPES
+} from './src/utils.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, 'data');
@@ -55,23 +52,24 @@ const app = express();
 // Origin pointing at http://localhost:<port>. Everything else is
 // rejected. The Vite dev server proxies /api → us so its origin is
 // also localhost.
+// Allow all origins
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  const allow =
-    !origin ||
-    /^https?:\/\/localhost(:\d+)?$/i.test(origin) ||
-    /^https?:\/\/127\.0\.0\.1(:\d+)?$/i.test(origin) ||
-    /^https?:\/\/\[::1\](:\d+)?$/i.test(origin);
-  if (!allow) {
-    return res.status(403).json({ error: 'Cross-origin request refused' });
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
   }
-  if (origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-    res.setHeader('Vary', 'Origin');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  }
-  if (req.method === 'OPTIONS') return res.status(204).end();
+
   next();
 });
 
