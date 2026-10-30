@@ -944,13 +944,13 @@ function App() {
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
-            <button
+            {/* <button
               className={`nav-btn nav-btn-support${currentView === 'support' ? ' nav-btn-support-active' : ''}`}
               onClick={() => setCurrentView('support')}
               title="Who makes this app, and how to help"
             >
               <Heart size={18} /> Support &amp; About
-            </button>
+            </button> */}
             <button
               className={`nav-btn ${currentView === 'controlpanel' ? 'nav-btn-active' : ''}`}
               onClick={() => setCurrentView('controlpanel')}
