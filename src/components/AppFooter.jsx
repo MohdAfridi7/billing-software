@@ -27,7 +27,7 @@ export default function AppFooter({ onOpenSupport }) {
       }}>
         <span>Free GST Billing{version ? ` v${version}` : ''}</span>
         <span aria-hidden="true">·</span>
-        <a href="https://dicecodes.com" target="_blank" rel="noopener noreferrer" style={link}>by DiceCodes</a>
+        <a href="https://dicecodes.com" target="_blank" rel="noopener noreferrer" style={link}>For Jiyalal</a>
         <span aria-hidden="true">·</span>
         <button type="button" onClick={onOpenSupport}
           style={{ ...link, background: 'none', border: 0, padding: 0, font: 'inherit', fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 3 }}>
