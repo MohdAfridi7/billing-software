@@ -1,0 +1,72 @@
+
+name: Deploy GST Billing
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Contabo
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Contabo Server
+        uses: appleboy/ssh-action@v1.2.0
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_DB: ${{ secrets.MONGODB_DB }}
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+
+          envs: MONGODB_URI,MONGODB_DB,CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET
+
+          script: |
+            set -e
+
+            cd /var/www/gst-billing
+
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Creating .env file..."
+
+            printf '%s\n' \
+              "MONGODB_URI=$MONGODB_URI" \
+              "MONGODB_DB=$MONGODB_DB" \
+              "CLOUDINARY_CLOUD_NAME=$CLOUDINARY_CLOUD_NAME" \
+              "CLOUDINARY_API_KEY=$CLOUDINARY_API_KEY" \
+              "CLOUDINARY_API_SECRET=$CLOUDINARY_API_SECRET" \
+              > .env
+
+            chmod 600 .env
+
+            echo "Installing dependencies..."
+            npm ci
+
+            echo "Building frontend..."
+            npm run build
+
+            echo "Restarting application..."
+
+            if pm2 describe gst-billing > /dev/null 2>&1; then
+              pm2 restart gst-billing --update-env
+            else
+              pm2 start server.js --name gst-billing
+            fi
+
+            pm2 save
+
+            echo "GST Billing deployment successful!"
